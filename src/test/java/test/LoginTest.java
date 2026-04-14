@@ -11,5 +11,38 @@ import pages.LoginPage;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LoginTest {
+    private WebDriver driver;
+    private LoginPage loginPage;
 
+    @BeforeEach
+    void setUp(){
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.saucedemo.com/");
+        loginPage = new LoginPage(driver);
+
+    }
+
+    @AfterEach
+    void tearDown(){
+        if(driver!=null){
+            driver.quit();
+        }
+    }
+
+    @Test
+    void loginCorrecto() throws InterruptedException {
+        Thread.sleep(2000);
+        loginPage.login("standard_user", "secret_sauce");
+        String url = loginPage.obtenerUrlActual();
+        assertTrue(url.contains("inventory"), "El usuario debería acceder a la página del inventario tras el login correcto");
+
+    }
+
+    @Test
+    void loginIncorrecto() throws InterruptedException {
+        Thread.sleep(2000);
+
+    }
 }

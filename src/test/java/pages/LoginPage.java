@@ -27,4 +27,16 @@ public class LoginPage {
     public void clickLogin() {
         driver.findElement(loginBtn).click();
     }
+
+    public void login(String user, String pass) {
+        ingresarUsuario(user);
+        ingresarPassword(pass);
+        clickLogin();
+    }
+
+    public String obtenerUrlActual() {
+        return driver.getCurrentUrl();
+    }
+
+
 }
