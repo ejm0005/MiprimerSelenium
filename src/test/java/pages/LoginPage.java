@@ -15,11 +15,13 @@ public class LoginPage {
     }
 
     public void ingresarUsuario(String user) {
-        // escribe el usuario en el campo correspondiente
+        driver.findElement(userField).clear();
+        driver.findElement(userField).sendKeys(user);
     }
 
     public void ingresarPassword(String pass) {
-        // escribe la contraseña en el campo correspondiente
+        driver.findElement(passField).clear();
+        driver.findElement(passField).sendKeys(pass);
     }
 
     public void clickLogin() {
