@@ -43,6 +43,13 @@ public class LoginTest {
     @Test
     void loginIncorrecto() throws InterruptedException {
         Thread.sleep(2000);
+        loginPage.login("standard_user", "clave_mal");
+
+        assertTrue(loginPage.errorVisible(),
+                "Debería mostrarse un mensaje de error al fallar el login por credenciales incorrectas");
+
+        assertTrue(loginPage.obtenerTextoError().contains("Username and password do not match"),
+                "El mensaje de error es diferente al esperado");
 
     }
 }

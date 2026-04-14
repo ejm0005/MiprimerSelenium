@@ -9,6 +9,7 @@ public class LoginPage {
     private By userField = By.id("user-name");
     private By passField = By.id("password");
     private By loginBtn = By.id("login-button");
+    private By errorMessage = By.cssSelector("[data-test='error']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -36,6 +37,17 @@ public class LoginPage {
 
     public String obtenerUrlActual() {
         return driver.getCurrentUrl();
+    }
+
+    public boolean errorVisible() {
+        return !driver.findElements(errorMessage).isEmpty();
+    }
+
+    public String obtenerTextoError() {
+        if (errorVisible()) {
+            return driver.findElement(errorMessage).getText();
+        }
+        return "";
     }
 
 
