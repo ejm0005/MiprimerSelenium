@@ -25,6 +25,6 @@ public class LoginPage {
     }
 
     public void clickLogin() {
-        // pulsa el botón de login
+        driver.findElement(loginBtn).click();
     }
 }
